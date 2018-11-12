@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/admin.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAh2b-25o76meKeklNpVh5ZHnfPl9469us",
+      authDomain: "theclubosfis.firebaseapp.com",
+      databaseURL: "https://theclubosfis.firebaseio.com",
+      projectId: "theclubosfis",
+      storageBucket: "theclubosfis.appspot.com",
+      messagingSenderId: "958262819139"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="js/admin.js"></script>
+
+  <title>TheClubOS Admin View: Welcome!</title>
+
+</head>
+  <body class="bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="d-flex justify-content-center"><a class="navbar-brand" href="index.html">TheClubOS</a></div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <label id="userNavBar" class="alert alert-dark">Christopher Ortega</label>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+      </div>
+    </nav>
+    <div class="container bg-primary rounded">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="jumbotron bg-success rounded">
+            <div class="row">
+              <small>><h4>Estado trabajadores:</h4></small>
+            </div>
+            <div class="row">
+              <table id="workingTable" class="table table-hover table-success table-sm">
+                <caption class="bg-success">Lista del estado de trabajo de los empleados.</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Estatus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1000</th>
+                    <td>Christopher Ismael Ortega</td>
+                    <td>Trabajando</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1002</th>
+                    <td>Luis Eduardo Núñez</td>
+                    <td>Trabajando</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1003</th>
+                    <td>Oscar Roberto Castro</td>
+                    <td>Fuera de turno</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1004</th>
+                    <td>Alma Marcela Silva</td>
+                    <td>Trabajando</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="jumbotron bg-info rounded">
+            <div class="row">
+              <small><h4>Live feed</h4></small>
+            </div>
+            <div class="row">
+              <table class="table table-hover table-info">
+                <tr>
+                  <td>Clientes presentes:</td>
+                  <td id="numPersonas">106</td>
+                </tr>
+                <tr>
+                  <td>Trabajadores:</td>
+                  <td id="numTrabajadores">32</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="jumbotron bg-danger rounded">
+            <div class="col-md-12">
+              <table class="table table-danger" id="employeeInfo">
+                <thead>
+                  <th scope="col">ID</th>
+                  <th scope="col">Empleado</th>
+                  <th scope="col">Más...</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1000</th>
+                    <td>Christopher Ismael Ortega</td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-secondary" type="button" id="dropdownMenuButton1000" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="fa fa-cog"></span>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1000">
+                          <a class="dropdown-item" href="#"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1000">Más información</button></a>
+                        </div>
+                        <div class="modal fade" id="exampleModalCenter1000" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1000" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle1000"><span class="fa fa-user-alt"></span>Información del empleado:</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true" class="fa fa-times-circle"></span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <table class="table table-hover">
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Nombre(s):</th>
+                                      <td>Christopher Ismael</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Apellido paterno:</th>
+                                      <td>Ortega</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Apellido materno:</th>
+                                      <td>González</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Puesto:</th>
+                                      <td>Gerente</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Dirección:</th>
+                                      <td>Av. Valle de Atemajac 103, 45138 Jardines del Valle, Zapopan, Jalisco</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Estatus actual:</th>
+                                      <td>Trabajando</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Celular</th>
+                                      <td>+52 1 3111228981</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Inicio:</th>
+                                      <td>6/11/2018</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span></button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1001</th>
+                    <td>Luis Eduardo Núñez</td>
+                    <td>
+                      <button class="btn btn-secondary" type="button" id="dropdownMenuButton1001" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-cog"></span>
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1001">
+                        <a class="dropdown-item" href="#"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1000">Más información</button></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1002</th>
+                    <td>Oscar Roberto Castro</td>
+                    <td>
+                      <button class="btn btn-secondary" type="button" id="dropdownMenuButton1001" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-cog"></span>
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1001">
+                        <a class="dropdown-item" href="#"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1000">Más información</button></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1003</th>
+                    <td>Alma Marcela Silva</td>
+                    <td>
+                      <button class="btn btn-secondary" type="button" id="dropdownMenuButton1001" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-cog"></span>
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1001">
+                        <a class="dropdown-item" href="#"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1000">Más información</button></a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
