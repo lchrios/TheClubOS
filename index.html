@@ -3,6 +3,8 @@
 <head>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/index.css">
   <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
   <script>
@@ -21,7 +23,7 @@
   <title>TheClubOS: Welcome!</title>
 
 </head>
-  <body background="img/fondo.png" onload="checkStatus()">
+  <body background="img/fondo.png">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">TheClubOS</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,17 +36,16 @@
             <a class="nav-link" href="admin.html">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Sucursales</a>
+            <a class="nav-link" href="">Sucursales</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contáctanos</a>
+            <a class="nav-link" href="">Contáctanos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Acerca de nosotros</a>
+            <a class="nav-link" href="">Acerca de nosotros</a>
           </li>
         </ul>
-        <!--p id="clock" class="alert display-4"></p-->
-        <form class="form-inline my-2 my-lg-0">
+        <form id="loginForm" class="form-inline my-2 my-lg-0 dissappear">
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text" id="">Usuario | Contraseña</span>
@@ -52,7 +53,8 @@
             <input id="username" type="text" class="form-control">
             <input id="password" type="password" class="form-control">
           </div>
-          <button id="logBut" class="btn btn-outline-info my-2 my-sm-0" onclick="login()">Log In</button>
+          <!--button class="btn btn-outline-info">Log In</button-->
+          <button type="button" class="btn btn-outline-info" onclick="makeLogin()">Login</button>
           <button type="button" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#exampleModalLong">
             Signin
           </button>
@@ -125,8 +127,92 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button id="createNewAccount" type="button" class="btn btn-primary">Crea tu cuenta</button>
+                  <button id="createNewAccount" type="button" class="btn btn-primary" data-dismiss="modal">Crea tu cuenta</button>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <form id="userID" class="form-inline my-2 my-lg-0 dissappearNot">
+          <label class="alert alert-dark">José Estalin</label>
+          <button class="btn btn-outline-info my-2 my-sm-0" type="button" data-toggle="modal" data-target="#exampleModalLongUser">Consultar info</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="window.location.reload()">Logout</button>
+          <div class="modal fade" id="exampleModalLongUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitleUser" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitleUser">Consulta de centro:</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                    <table class="table table-hover table-info">
+                      <tr>
+                        <td>Horario:</td>
+                        <td>22:00-4:00</td>
+                      </tr>
+                      <tr>
+                        <td>Clientes presentes:</td>
+                        <td>106</td>
+                      </tr>
+                      <tr>
+                        <td>Estado:</td>
+                        <td><font color="red"><b>Cerrado</b></font></td>
+                      </tr>
+                      <tr>
+                        <td>Personas betadas:</td>
+                        <td>15</td>
+                      </tr>
+                      <tr>
+                        <td>Dirección:</td>
+                        <td>De Los Insurgentes Pte. 337, Versalles, 63139 Tepic, Nay.</td>
+                      </tr>
+                    </table><hr />
+                    <h4>Información cuenta</h4>
+                    <table class="table table-hover table-info">
+                      <tr>
+                        <td>Nombre(s):</td>
+                        <td>José</td>
+                      </tr>
+                      <tr>
+                        <td>Apellido paterno:</td>
+                        <td>Estalin</td>
+                      </tr>
+                      <tr>
+                        <td>Apellido materno:</td>
+                        <td>-</td>
+                      </tr>
+                      <tr>
+                        <td>Fecha de nacimiento:</td>
+                        <td>18/12/1878</td>
+                      </tr>
+                      <tr>
+                        <td>Bebida favorita:</td>
+                        <td>Vodka</td>
+                      </tr>
+                      <tr>
+                        <td>Métodos alternos de pago:</td>
+                        <td>
+                          <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Ver métodos
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#">Antro Créditos<i class="fas fa-check-circle"></i></a>
+                              <a class="dropdown-item" href="#">PayPal<i class="fas fa-times-circle"></i></a>
+                              <a class="dropdown-item" href="#">Tarjeta bancaria<i class="fas fa-check-circle"></i></a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
                 </div>
               </div>
             </div>

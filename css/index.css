@@ -9,3 +9,15 @@ nav {
 input{
   margin-left: 10px;
 }
+
+.dissappear{
+  display: block;
+}
+
+.dissappearNot{
+  display: none;
+}
+
+i {
+  margin-left: 10px;
+}
